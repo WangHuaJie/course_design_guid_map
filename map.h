@@ -49,6 +49,9 @@ void
 init_arc(ArcNode *arc,int r1,int r2,const char *ch1,const char *ch2);
 
 void
+oversert(AdjMultipleList *G,ArcNode *arc,int no);
+
+void
 arc_insert(AdjMultipleList *G,ArcNode *arc);
 void
 arc_build(AdjMultipleList *G,int r1,int r2,const char *ch1,const char *ch2);

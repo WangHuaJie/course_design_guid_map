@@ -60,7 +60,6 @@ cmp(const char *ch,AdjMultipleList *G)
 {
     int i,
         j;
-    printf("3\n");
     for(i = 0;i < G->vexnum;i++)
         if((j = strcmp(ch,G->vertex[i].name)) == 0)
             return ++i;
@@ -71,7 +70,6 @@ cmp(const char *ch,AdjMultipleList *G)
 void
 init_arc(ArcNode *arc,int r1,int r2,const char *ch1,const char *ch2)
 {
-    printf("4\n");
     arc->mark = 0;
     arc->pvex = r1;
     arc->bvex = r2;
@@ -93,8 +91,50 @@ init_arc(ArcNode *arc,int r1,int r2,const char *ch1,const char *ch2)
 
 
 void
+oversert(AdjMultipleList *G,ArcNode *arc,int no)
+{
+    ArcNode *ar1,
+            *ar2;
+    ar1 = G->vertex[no].head;
+    
+    while(ar1 != NULL){
+        if(ar1->pvex == no){
+            ar2 = ar1;
+            ar1 = ar1->pvex_next;
+        }
+        else{
+            ar2 = ar1;
+            ar1 = ar1->bvex_next;
+        }
+    }
+    if(ar2->pvex == no)
+        ar2->pvex_next = arc;
+    else if(ar2->bvex == no)
+        ar2->bvex_next = arc;
+    
+    return;
+}
+
+void
 arc_insert(AdjMultipleList *G,ArcNode *arc)
 {
+    int pvex = arc->pvex,
+        bvex = arc->bvex;
+
+    if(G->vertex[pvex].head == NULL)
+        G->vertex[pvex].head = arc;
+    else
+        oversert(G,arc,pvex);
+
+    if(G->vertex[bvex].head == NULL)
+        G->vertex[bvex].head = arc;
+    else
+        oversert(G,arc,bvex);
+
+    return;
+}
+
+/*
     int i = 0;
     int key1 = 0,
         key2 = 0;
@@ -112,6 +152,7 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
                 }
                 ar->pvex_next = arc;
                 key1 = 1;
+                break;
             }
             else if((G->vertex[i].head->bvex == arc->pvex) && (arc != G->vertex[i].head))
             {
@@ -125,6 +166,7 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
                 {
                     ar->bvex_next = arc;
                     key1 = 1;
+                    break;
                 }
             }
         }
@@ -141,6 +183,7 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
                     ar = ar->pvex_next;
                 ar->pvex_next = arc;
                 key2 = 1;
+                break;
             }
             else if((G->vertex[i].head->bvex == arc->bvex) && (arc != G->vertex[i].head))
             {
@@ -151,6 +194,7 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
                 {
                     ar->bvex_next = arc;
                     key2 = 1;
+                    break;
                 }
             }
         }
@@ -158,8 +202,15 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
     if(key2 == 0)
         G->vertex[arc->bvex].head = arc;
 
+
+
+    
+
+
+
     return;
 }
+*/
 
 void
 arc_build(AdjMultipleList *G,int r1,int r2,const char *ch1,const char *ch2)
@@ -167,13 +218,10 @@ arc_build(AdjMultipleList *G,int r1,int r2,const char *ch1,const char *ch2)
 
     ArcNode *arc;
     arc = (ArcNode*)malloc(sizeof(ArcNode));
-    printf("6\n");
     r1--;
     r2--;
     init_arc(arc,r1,r2,ch1,ch2);
-    printf("6.1\n");
     arc_insert(G,arc);
-    printf("6.2\n");
     return;
 }
 
@@ -210,8 +258,6 @@ read_arc_data(AdjMultipleList *G)
 void
 Build(AdjMultipleList *G)
 {
-    printf("8\n");
-//    G = (AdjMultipleList *)malloc(sizeof(AdjMultipleList));
     init_map(G);
     read_vex_data(G);
     read_arc_data(G);

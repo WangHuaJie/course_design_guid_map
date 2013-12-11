@@ -15,23 +15,24 @@ vexallarc(AdjMultipleList *G,int i)
     ArcNode *ar;
     VertexNode *vex;
     int no;
+    int key1 = 0,
+        key2 = 0;
 
     vex = &G->vertex[i];
     ar = vex->head;
     no = vex->No;
     while(ar != NULL)
     {
-        printf("2\n");
+//        printf("o;o\n");
         if(ar->pvex == no)
         {
-            printf("2.1\n");
-            printf("%s<---->%s:",G->vertex[no].name,G->vertex[ar->bvex].name);
+            printf("%s<---->%s:  %d km\n",G->vertex[no].name,G->vertex[ar->bvex].name,ar->distence);
             ar = ar->pvex_next;
+            
         }   
         else if(ar->bvex == no)
         {
-            printf("2.2\n");
-            printf("%s<---->%s:",G->vertex[no].name,G->vertex[ar->pvex].name);
+            printf("%s<---->%s:  %d km\n",G->vertex[no].name,G->vertex[ar->pvex].name,ar->distence);
             ar = ar->bvex_next;
         }
     }
@@ -44,10 +45,8 @@ Show(AdjMultipleList *G)
 {
     int i;
 
-    printf("1.1\n");
     for(i = 0;i < G->vexnum;i++)
     {
-        printf("1\n");
         vexallarc(G,i);
     }
         

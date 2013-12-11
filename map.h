@@ -69,3 +69,38 @@ vexallarc(AdjMultipleList *G,int i);
 
 void
 Show(AdjMultipleList *G);
+
+//function in Dfserch.c******************************
+
+void
+get2places(char *ch1,char *ch2);
+
+void
+printwrong(const char *ch);
+
+int
+changeintono(AdjMultipleList *G,const char *ch1,const char *ch2,int *start,int *end);
+
+void
+copy(int *road,int *copyroad);
+
+void
+output(AdjMultipleList *G,int *road);
+
+int 
+overoad(int *road,int now);
+
+void
+addroad(int *road,int now);
+
+void
+overarc(AdjMultipleList *G,int *arcarray,int now);
+
+void
+recur(AdjMultipleList *G,int *road,int now,int end);
+
+void
+search(AdjMultipleList *G,int *Start,int *End);
+
+void
+Dfsearch(AdjMultipleList *G);

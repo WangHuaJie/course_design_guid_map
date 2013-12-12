@@ -18,6 +18,7 @@ main(void)
     Build(G);
     Show(G);
     Dfsearch(G);
+    Mstprime(G);
 //  read_input_file(G);
 //  A->B_DFS(G);
 //  A->B_BFS(G);

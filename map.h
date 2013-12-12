@@ -104,3 +104,32 @@ search(AdjMultipleList *G);
 
 void
 Dfsearch(AdjMultipleList *G);
+
+//function in Mstprime.c **********************************************
+
+void
+getplace(char *ch);
+
+int
+cmp1(AdjMultipleList *G,char *ch);
+
+void
+printwrong1(char *ch);
+
+void
+init_vexarray(AdjMultipleList *G,int j,int *vexarray);
+
+int 
+cmp2(int *vexarray,int no);
+
+void
+ovexarray(AdjMultipleList *G,int *vexarray,ArcNode *arc[]);
+
+void
+mst(AdjMultipleList *G,char *ch,ArcNode *arc[]);
+
+void
+show_mst(AdjMultipleList *G,ArcNode *arc);
+
+void
+Mstprime(AdjMultipleList *G);

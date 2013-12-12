@@ -121,7 +121,10 @@ init_vexarray(AdjMultipleList *G,int j,int *vexarray);
 
 int 
 cmp2(int *vexarray,int no);
-
+/*
+void
+init_arc1(AdjMultipleList *G,int j,ArcNode *arc[]);
+*/
 void
 ovexarray(AdjMultipleList *G,int *vexarray,ArcNode *arc[]);
 
@@ -129,7 +132,7 @@ void
 mst(AdjMultipleList *G,char *ch,ArcNode *arc[]);
 
 void
-show_mst(AdjMultipleList *G,ArcNode *arc);
+show_mst(AdjMultipleList *G,ArcNode *arc[]);
 
 void
 Mstprime(AdjMultipleList *G);

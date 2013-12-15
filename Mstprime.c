@@ -81,11 +81,13 @@ while(1){
             if(ar->pvex == vexarray[i]){
                 if((l = cmp2(vexarray,ar->bvex)) == 1){
                     ar = ar->pvex_next;
+                    continue;
                 }
                 else if(ar->distence < arc[j]->distence){
                     arc[j] = ar;
                     vexarray[k] = ar->bvex;
                     ar = ar->pvex_next;
+                    continue;
                 }
                 else
                     ar = ar->pvex_next;
@@ -93,11 +95,13 @@ while(1){
             else if(ar->bvex == vexarray[i]){
                 if((l = cmp2(vexarray,ar->pvex)) == 1){
                     ar = ar->bvex_next;
+                    continue;
                 }
-                else if(ar->distence < arc[j]->distence){
+                if(ar->distence < arc[j]->distence){
                     arc[j] = ar;
                     vexarray[k] = ar->pvex;
                     ar = ar->bvex_next;
+                    continue;
                 }
                 else
                     ar = ar->bvex_next;

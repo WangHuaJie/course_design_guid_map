@@ -135,6 +135,10 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
     return;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> b4d11f85fd9534fe4a61fe916fdf972fb2e0992c
 void
 arc_build(AdjMultipleList *G,int r1,int r2,const char *ch1,const char *ch2)
 {

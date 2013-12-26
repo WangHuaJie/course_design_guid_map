@@ -19,7 +19,9 @@ main(void)
     Show(G);
     Dfsearch(G);
     while(1){
-    Mstprime(G);}
+        mstkruskal(G);
+    }
+//  Mstprime(G);}
 //  read_input_file(G);
 //  A->B_DFS(G);
 //  A->B_BFS(G);

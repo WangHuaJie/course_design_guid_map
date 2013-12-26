@@ -18,6 +18,7 @@ init_map(AdjMultipleList *G)
     {
         G->vertex[i].head = NULL;
         G->vertex[i].No = 0;
+        G->vertex[i].mark = 0;
         memset(G->vertex[i].name,0,MAXVEX);
     }
     G->vexnum = 0;
@@ -133,84 +134,6 @@ arc_insert(AdjMultipleList *G,ArcNode *arc)
 
     return;
 }
-
-/*
-    int i = 0;
-    int key1 = 0,
-        key2 = 0;
-    ArcNode *ar;
-
-    for(i = 0;i < G->vexnum;i++){
-        if(G->vertex[i].head != NULL){
-            if(G->vertex[i].head->pvex == arc->pvex)
-            {
-                ar = G->vertex[i].head;
-                while(ar->pvex_next != NULL)
-                {
-                    printf("ooioo\n");
-                    ar = ar->pvex_next;
-                }
-                ar->pvex_next = arc;
-                key1 = 1;
-                break;
-            }
-            else if((G->vertex[i].head->bvex == arc->pvex) && (arc != G->vertex[i].head))
-            {
-                ar = G->vertex[i].head;
-                while(ar->bvex_next != NULL)
-                {   
-                    printf("ooo\n");
-                    ar = ar->bvex_next;
-                }
-                if(arc != ar)
-                {
-                    ar->bvex_next = arc;
-                    key1 = 1;
-                    break;
-                }
-            }
-        }
-    }
-    if(key1 == 0)
-        G->vertex[arc->pvex].head = arc;
-
-    for(i = 0;i < G->vexnum;i++){
-        if(G->vertex[i].head != NULL){
-            if(G->vertex[i].head->pvex == arc->bvex)
-            {
-                ar = G->vertex[i].head;
-                while(ar->pvex_next != NULL)
-                    ar = ar->pvex_next;
-                ar->pvex_next = arc;
-                key2 = 1;
-                break;
-            }
-            else if((G->vertex[i].head->bvex == arc->bvex) && (arc != G->vertex[i].head))
-            {
-                ar = G->vertex[i].head;
-                while(ar->bvex_next != NULL)
-                    ar = ar->bvex_next;
-                if(arc != ar)
-                {
-                    ar->bvex_next = arc;
-                    key2 = 1;
-                    break;
-                }
-            }
-        }
-    }
-    if(key2 == 0)
-        G->vertex[arc->bvex].head = arc;
-
-
-
-    
-
-
-
-    return;
-}
-*/
 
 void
 arc_build(AdjMultipleList *G,int r1,int r2,const char *ch1,const char *ch2)

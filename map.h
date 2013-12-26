@@ -25,6 +25,7 @@ typedef struct VertexNode
 {
     char name[20];
     int No;
+    int mark;
     ArcNode *head;
 }VertexNode;
 
@@ -136,3 +137,22 @@ show_mst(AdjMultipleList *G,ArcNode *arc[]);
 
 void
 Mstprime(AdjMultipleList *G);
+
+//function in MstKruskal.c ********************************************
+
+void
+getplace2(AdjMultipleList *G,char *ch);
+
+int 
+check_circle(ArcNode *arcarray[],ArcNode *ar,int I);
+
+void
+mst_kruskal(AdjMultipleList *G,ArcNode *arcarray[]);
+
+void
+show_kruskal(AdjMultipleList *G,ArcNode *arcarray[]);
+
+void
+mstkruskal(AdjMultipleList *G);
+
+
